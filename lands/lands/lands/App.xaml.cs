@@ -14,8 +14,8 @@ namespace lands
         public App()
         {
             InitializeComponent();
-
-            MainPage = new LoginPage();
+            //Se Inicia en una navegationpage para poder apilar páginas en el futuro
+            MainPage = new NavigationPage(new LoginPage());
         }
         #endregion
 
