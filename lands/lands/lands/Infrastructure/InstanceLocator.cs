@@ -4,7 +4,6 @@ using System.Text;
 
 namespace lands.Infrastructure
 {
-
     using ViewModel;
     public class InstanceLocator
     {
