@@ -90,12 +90,14 @@
                     BackgroundColor="Navy"
                     Text="Login"
                         Command="{Binding LoginCommand}"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                     HeightRequest="46"
                     TextColor="White"
                     BorderRadius="23"
              />
                     <Button
                         HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                     BackgroundColor="Purple"
                     Text="Register"
                     HeightRequest="46"
