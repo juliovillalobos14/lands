@@ -15,15 +15,34 @@ namespace lands.ViewModel
             get;
             set;
         }
+        //No se carga en el constructor
+        public LandsViewModel Lands
+        {
+            get;
+            set;
+        }
         #endregion
         //Instanciar en el constructor
         #region Constructors
         public MainViewModel()
         {
+            instance = this;
             this.Login = new LoginViewModel();
         }
         #endregion
 
+        #region Sinlgeton
+        private static MainViewModel instance;
+        public static MainViewModel GetInstance()
+        {
+            if (instance == null)
+            {
+                return new MainViewModel();
+            }
+            return instance;
+        }
+
+        #endregion
 
     }
 

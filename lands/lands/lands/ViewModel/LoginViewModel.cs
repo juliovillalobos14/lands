@@ -8,6 +8,7 @@ namespace lands.ViewModel
     using System.Text;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using Views;
 
     //Heredamos una interfaz para actualizas
     public class LoginViewModel : BaseViewModel
@@ -18,13 +19,14 @@ namespace lands.ViewModel
         private string password;
         private bool isRunning;
         private bool isEnabled;
+        private string email;
         #endregion
 
         #region Properties
         public string Email
         {
-            get;
-            set;
+            get { return this.email; }
+            set { SetValue(ref this.email, value); }
         }
         public string Password
         {
@@ -106,10 +108,12 @@ namespace lands.ViewModel
             this.IsEnabled = true;
 
 
-            await Application.Current.MainPage.DisplayAlert(
-                    "OK",
-                    "Enter",
-                    "Accept");
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+            //Lamada a la página de lands despues de hacer login
+            MainViewModel.GetInstance().Lands = new LandsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
         }
         #endregion
 
@@ -118,6 +122,12 @@ namespace lands.ViewModel
         {
             this.IsRemembered = true;
             this.isEnabled = true;
+
+            //De manera temporal para entrar en automatico
+            this.Email = "jzuluaga55@gmail.com";
+            this.Password = "1234";
+
+            //http://restcountries.eu            //rest/v2/all﻿
         }
         #endregion
 
